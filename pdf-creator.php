@@ -41,12 +41,7 @@ require('writehtmlclass.php');
 	if(ini_get('magic_quotes_gpc')=='1')
         $htmla=stripslashes($htmla);
     $pdf->WriteHTML($htmla);
-	
-	$pdf->Output($posisi_file, 'I');
-
-if(!file_exists("Storage/".$posisi_file)){	
-	$pdf->Output("Storage/".$posisi_file, 'F');
-}	
+	$pdf->Output("Storage/".$posisi_file, 'I');	
 	$pdf->Close();
 
 
