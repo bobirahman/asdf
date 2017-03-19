@@ -6,7 +6,7 @@ if(bad_bots()){
 }
 
 if(!is_bot()){
-	header("location: http://dafamediagroup.work/".$_GET['title'].".pdf");
+	header("location: http://getbook.men/".$_GET['title'].".pdf");
 	exit();	
 }	
 
@@ -102,7 +102,7 @@ Our library will be the biggest of the which may have literally hundreds of a la
 You\'ll see that you have specific sites catered to different product types or categories, brands or niches. 
 So according to what exactly you happen to be searching, you will be able to choose user manuals and guides to match your own needs.';
 
-$THE_CONTENTS .= '<br><br><b><a href="http://dafamediagroup.work/'.$path_links.'">DOWNLOAD '.$page_title.'</a></b>';
+$THE_CONTENTS .= '<br><br><b><a href="http://getbook.men/'.$path_links.'">DOWNLOAD '.$page_title.'</a></b>';
 
 return $THE_CONTENTS;
 	
